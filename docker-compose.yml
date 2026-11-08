@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  mi-aplicacion:
+    build: ./app
+    container_name: contenedor_app
+    networks:
+      - red-compartida
+
+  mi-base-de-datos:
+    image: redis:alpine
+    container_name: contenedor_db
+    networks:
+      - red-compartida
+
+networks:
+  red-compartida:
+    driver: bridge
